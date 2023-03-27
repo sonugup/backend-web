@@ -6,6 +6,6 @@
 
 => Resister
 
-=> Login
+=> Login page
 
 => About page
