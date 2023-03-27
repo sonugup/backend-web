@@ -7,7 +7,7 @@
 => Resister page
 
 => Login page
-      -whith token
+      --with token
 
 => About page
 
