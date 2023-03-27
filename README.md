@@ -4,7 +4,7 @@
 
 ### Authencation  
 
-=> Resister
+=> Resister page
 
 => Login page
 
