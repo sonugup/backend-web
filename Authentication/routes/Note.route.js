@@ -24,7 +24,7 @@ noteRoute.patch("/updated/:id", (req, res) => {
   res.send("updated the notes")
 });
 noteRoute.delete("/delete/:id", (req, res) => {
-  res.send("Deleted the notes");
+  res.send("Deleted the notes")
 });
 
 module.exports = {
