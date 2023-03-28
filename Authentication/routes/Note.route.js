@@ -20,7 +20,7 @@ noteRoute.post("/create", async (req, res) => {
   }
 });
 noteRoute.patch("/updated/:id", (req, res) => {
-  const payload = req.body;
+  const payload = req.body
   res.send("updated the notes");
 });
 noteRoute.delete("/delete/:id", (req, res) => {
