@@ -16,7 +16,7 @@ noteRoute.post("/create", async (req, res) => {
     res.send("add the note")
   } catch (err) {
     console.log(err)
-    res.send({ msg: "Somthing wrong" });
+    res.send({ msg: "Somthing wrong" })
   }
 });
 noteRoute.patch("/updated/:id", (req, res) => {
