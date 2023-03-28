@@ -21,7 +21,7 @@ noteRoute.post("/create", async (req, res) => {
 });
 noteRoute.patch("/updated/:id", (req, res) => {
   const payload = req.body
-  res.send("updated the notes");
+  res.send("updated the notes")
 });
 noteRoute.delete("/delete/:id", (req, res) => {
   res.send("Deleted the notes");
