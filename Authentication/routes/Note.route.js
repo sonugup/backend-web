@@ -11,7 +11,7 @@ noteRoute.get("/", (req, res) => {
 noteRoute.post("/create", async (req, res) => {
   const payload = req.body
   try {
-    const n_notes = new NoteModel(payload);
+    const n_notes = new NoteModel(payload)
     await n_notes.save();
     res.send("add the note");
   } catch (err) {
