@@ -8,7 +8,7 @@
 => Resister page
 
 => Login page
-      --with token
+      --with
 
 
 
