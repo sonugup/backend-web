@@ -13,7 +13,7 @@ noteRoute.post("/create", async (req, res) => {
   try {
     const n_notes = new NoteModel(payload)
     await n_notes.save()
-    res.send("add the note");
+    res.send("add the note")
   } catch (err) {
     console.log(err);
     res.send({ msg: "Somthing wrong" });
