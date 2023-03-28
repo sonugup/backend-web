@@ -17,7 +17,7 @@ userRouter.get("/sing", async(request, response) => {
         console.log(err)
     }
   
-    // response.json("sing page")
+   
 })
 
 userRouter.post("/sing", async(request, response) => {
