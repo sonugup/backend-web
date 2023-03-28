@@ -16,7 +16,7 @@ userRouter.get("/sing", async(request, response) => {
         console.log("something rwong")
         console.log(err)
     }
-    // const {name, email, pass, number} = request.body;
+  
     // response.json("sing page")
 })
 
