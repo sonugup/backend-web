@@ -11,7 +11,6 @@ userRouter.get("/sing", async(request, response) => {
     try{
         
         const user=await UserModel.find({name, email, pass, num});
-        // await user.seve()
         response.send(user)
     }catch(err) {
         console.log("something rwong")
