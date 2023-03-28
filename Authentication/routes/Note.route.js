@@ -9,22 +9,22 @@ noteRoute.get("/", (req, res) => {
 });
 
 noteRoute.post("/create", async (req, res) => {
-  const data = req.body
+  const data = req.body;
   try {
-    const n_notes = new NoteModel(data)
-    await n_notes.save()
-    res.send("add the note")
+    const n_notes = new NoteModel(data);
+    await n_notes.save();
+    res.send("add the note");
   } catch (err) {
-    console.log(err)
-    res.send({ msg: "Somthing wrong" })
+    console.log(err);
+    res.send({ msg: "Somthing wrong" });
   }
 });
 noteRoute.patch("/updated/:id", (req, res) => {
-  const payload = req.body
-  res.send("updated the notes")
+  const payload = req.body;
+  res.send("updated the notes");
 });
 noteRoute.delete("/delete/:id", (req, res) => {
-  res.send("Deleted the notes")
+  res.send("Deleted the notes");
 });
 
 module.exports = {
