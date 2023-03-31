@@ -18,3 +18,4 @@
 => Register page
 => Login Page
 => Notes Page
+=> CreateNote Page
