@@ -45,6 +45,7 @@ userRouter.get("/login", async (requset, response) => {
     console.log(err);
   }
 });
+
 userRouter.post("/login", async (request, response) => {
   const { email, pass } = request.body;
   try {
