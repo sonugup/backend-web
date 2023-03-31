@@ -20,8 +20,6 @@ app.use(authenticate);
 app.use("/notes", notesRouter);
 
 // app.get("/about", (req, res) => {
-//     const token=req.headers.authorization;
-//     jwt.verify(token, 'sonu', (err, decoded) => {
 //         
 //       });
 
