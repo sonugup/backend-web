@@ -15,5 +15,5 @@
 ### Frentend
 
 => Home Page
-
+=> Register page
 
