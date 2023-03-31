@@ -19,9 +19,7 @@ app.use("/users", userRouter);
 app.use(authenticate);
 app.use("/notes", notesRouter);
 
-// app.get("/about", (req, res) => {
-//         
-//       });
+
 
 
 
