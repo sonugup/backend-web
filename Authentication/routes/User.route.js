@@ -9,7 +9,7 @@ userRouter.get("/sing", async (request, response) => {
   const { name, email, pass, num } = request.body;
   try {
     const user = await UserModel.find({ name, email, pass, num });
-
+    response.send(user);
     response.send("sign succssesfull")
   } catch (err) {
     console.log("something went rwong");
