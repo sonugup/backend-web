@@ -20,9 +20,6 @@ app.use(authenticate);
 app.use("/notes", notesRouter);
 
 
-
-
-
 app.listen(port, async () => {
   try {
     await connection;
