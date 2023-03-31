@@ -8,10 +8,11 @@ const userRouter = express.Router();
 userRouter.get("/sing", async (request, response) => {
   const { name, email, pass, num } = request.body;
   try {
-    const user = await UserModel.find({ name, email, pass, num });
-    response.send(user);
+    // const user = await UserModel.find({ name, email, pass, num });
+    // response.send(user);
+    response.send("sign succssesfull")
   } catch (err) {
-    console.log("something rwong");
+    console.log("something went rwong");
     console.log(err);
   }
 });
@@ -52,10 +53,10 @@ userRouter.post("/login", async (request, response) => {
 
     //    await user.save()
     if (user.length > 0) {
-      bcrypt.compare(pass, user[0].pass, (err, result) => {
+      bcrypt.compare(pass, hashed_pass, (err, result) => {
         if (result) {
-          const token = jwt.sign({ course: "backend" }, "sonu");
-          response.json({ msg: "login successfull", token: token });
+          const token = jwt.sign({ userId:user[0]._id }, "sonu");
+          response.json({ msg: "login successfull", "token": token });
         } else {
           response.send("rwong creatensial");
         }

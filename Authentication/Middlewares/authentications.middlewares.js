@@ -5,6 +5,9 @@ const authenticate=(req, res, next) => {
     if(token){
         const decoded=jwt.verify(token, "sonu")
         if(decoded){
+            const userID=decoded.userID
+            console.log(decoded)
+            req.body.userId=userID
             next()
         }else{
             res.send("Loging First")

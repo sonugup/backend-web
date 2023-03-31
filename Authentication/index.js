@@ -1,10 +1,14 @@
 const express = require("express");
 const { connection } = require("./configs/db");
 const { userRouter } = require("./routes/User.route");
-const { noteRoute } = require("./routes/Note.route");
+const { notesRouter } = require("./routes/Note.route");
 const { authenticate } = require("./Middlewares/authentications.middlewares");
 const app = express();
 const port = 5040;
+
+app.use(cors({
+  origin:"*"
+}))
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -13,7 +17,7 @@ app.get("/", (req, res) => {
 
 app.use("/users", userRouter);
 app.use(authenticate);
-app.use("/notes", noteRoute);
+app.use("/notes", notesRouter);
 
 // app.get("/about", (req, res) => {
 //     const token=req.headers.authorization;

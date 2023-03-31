@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 
-const noteSchema = mongoose.Schema({
+const notesSchema = mongoose.Schema({
   title: String,
-  price: Number,
+  note: String,
   category: String,
-  author: String,
+  userId: String,
 });
 
-const NoteModel = mongoose.model("note", noteSchema);
+const NoteModel = mongoose.model("note", notesSchema);
 
 module.exports = { NoteModel };
+

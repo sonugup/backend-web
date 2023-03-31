@@ -1,32 +1,67 @@
 const express = require("express");
 
-const NoteModel = require("../model/Note.model");
+const {NoteModel} = require("../model/Note.model");
 
-const noteRoute = express.Router();
+const notesRouter = express.Router();
 
-noteRoute.get("/", (req, res) => {
+notesRouter.get("/", (req, res) => {
   res.send("All the notes");
 });
 
-noteRoute.post("/create", async (req, res) => {
-  const data = req.body;
+
+
+notesRouter.post("/create", async (req, res) => {
+  const data = req.body
+  
   try {
     const n_notes = new NoteModel(data);
     await n_notes.save();
+    console.log(n_notes)
     res.send("add the note");
   } catch (err) {
     console.log(err);
     res.send({ msg: "Somthing wrong" });
   }
 });
-noteRoute.patch("/updated/:id", (req, res) => {
+notesRouter.patch("/updated/:id", async (req, res) => {
   const payload = req.body;
-  res.send("updated the notes");
+  const id=req.params.id
+  const note=await NoteModel.findOne({"_id":id})
+  const userId_note=note.userId
+  const userID_making=req.body.userId;
+  try{
+    if(userID_making === userId_note){
+      res.send({"msg":"You are not authorized"})
+    }else{
+      await NoteModel.findByIdAndUpdate({"_id":id}, payload)
+    res.send("updated the notes");
+    }
+    
+  }catch(err){
+    console.log("something wrong")
+    console.log(err)
+  }
+ 
 });
-noteRoute.delete("/delete/:id", (req, res) => {
-  res.send("Deleted the notes");
+notesRouter.delete("/delete/:id", async (req, res) => {
+  
+  const id=req.params.id
+  const note=await NoteModel.findOne({_id:id})
+  const userId_note=note.userId
+  const userID_making=req.body.userId;
+  try{
+    if(userID_making === userId_note){
+      res.send({"msg":"You are not authorized"})
+    }else{
+      await NoteModel.findByIdAndDelete({_id:id})
+    res.send("deleted the notes");
+    }
+    
+  }catch(err){
+    console.log("something wrong")
+    console.log(err)
+  }
+  
 });
 
-module.exports = {
-  noteRoute,
-};
+module.exports = {notesRouter};
