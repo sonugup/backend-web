@@ -8,8 +8,8 @@ const userRouter = express.Router();
 userRouter.get("/sing", async (request, response) => {
   const { name, email, pass, num } = request.body;
   try {
-    // const user = await UserModel.find({ name, email, pass, num });
-    // response.send(user);
+    const user = await UserModel.find({ name, email, pass, num });
+    response.send(user);
     response.send("sign succssesfull")
   } catch (err) {
     console.log("something went rwong");
@@ -45,13 +45,14 @@ userRouter.get("/login", async (requset, response) => {
     console.log(err);
   }
 });
+
 userRouter.post("/login", async (request, response) => {
   const { email, pass } = request.body;
   try {
     const user = await UserModel.find({ email });
     console.log(user);
 
-    //    await user.save()
+       await user.save()
     if (user.length > 0) {
       bcrypt.compare(pass, hashed_pass, (err, result) => {
         if (result) {
