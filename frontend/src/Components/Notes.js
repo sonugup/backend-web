@@ -4,18 +4,19 @@ const Notes = () => {
     const [notes, setNotes]=useState("")
     
       useEffect(() => {
-        fetch("http://localhost:5040/notes/create", {
+        fetch("http://localhost:5040/notes", {
          headers:{
            "Authorization":localStorage.getItem("token")
         }
-      }).then(res => res.json()).then(res => {
+      }).then(res => res.json())
+      .then(res => {
         console.log(res);
         setNotes(res)
       }).catch(err => console.log(err))
       }, [])
       
       const deletedNote = (noteId) => {
-        fetch(`http://localhost:5040/notes/create/${noteId}`, {
+        fetch(`http://localhost:5040/notes/delete/${noteId}`, {
             method : "DELETE",
             headers:{
                 "Authorization":localStorage.getItem("token")

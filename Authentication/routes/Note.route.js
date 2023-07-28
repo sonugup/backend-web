@@ -4,8 +4,18 @@ const {NoteModel} = require("../model/Note.model");
 
 const notesRouter = express.Router();
 
-notesRouter.get("/", (req, res) => {
-  res.send("All the notes");
+notesRouter.get("/", async (req, res) => {
+  // const data=req.body;
+  try {
+    const notes = await NoteModel.find()
+    // res.send("notes")
+  res.send(notes)
+  console.log(notes)
+  } catch (err) {
+    console.log("something went rwong");
+    console.log(err);
+  }
+  
 });
 
 
@@ -27,8 +37,8 @@ notesRouter.patch("/updated/:id", async (req, res) => {
   const payload = req.body;
   const id=req.params.id
   const note=await NoteModel.findOne({"_id":id})
-  const userId_note=note.userId
-  const userID_making=req.body.userId;
+  const userId_note=note.userID
+  const userID_making=req.body.userID;
   try{
     if(userID_making === userId_note){
       res.send({"msg":"You are not authorized"})
@@ -47,8 +57,8 @@ notesRouter.delete("/delete/:id", async (req, res) => {
   
   const id=req.params.id
   const note=await NoteModel.findOne({_id:id})
-  const userId_note=note.userId
-  const userID_making=req.body.userId;
+  const userId_note=note.userID
+  const userID_making=req.body.userID;
   try{
     if(userID_making === userId_note){
       res.send({"msg":"You are not authorized"})

@@ -2,10 +2,10 @@ import React, {useState} from 'react'
 
 const Register = () => {
 
-  const [name, setName] =useState([])
-  const [email, setEmail] =useState([])
-  const [pass, setPass] =useState([])
-  const [num, setNum] =useState([])
+  const [name, setName] =useState("")
+  const [email, setEmail] =useState("")
+  const [pass, setPass] =useState("")
+  const [num, setNum] =useState("")
 
   const haindleClick = () => {
     const payload={

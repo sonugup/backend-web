@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
 
 const Login = () => {
-    const [name, setName] =useState("")
     const [email, setEmail] =useState("")
     const [pass, setPass] =useState("")
-    const [num, setNum] =useState("")
   
     const haindleClick = () => {
       const payload={
@@ -31,7 +29,7 @@ const Login = () => {
         Regiseter
         <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <input type="password" name="pass" value={pass} onChange={(e) => setPass(e.target.value)} />
-        <button type="submit"  onClick={haindleClick}>Add Notes</button>
+        <button type="submit"  onClick={haindleClick}>Login</button>
       </div>
     )
 }

@@ -2,7 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const { UserModel } = require("../model/User.model");
 const jwt = require("jsonwebtoken");
-
+require('dotenv').config()
 const userRouter = express.Router();
 
 userRouter.get("/sing", async (request, response) => {
@@ -26,7 +26,7 @@ userRouter.post("/sing", async (request, response) => {
       } else {
         const user = new UserModel({ name, email, pass: secure_pass, num });
         await user.save();
-        response.send("sing page");
+        response.send(user);
       }
     });
   } catch (err) {
@@ -54,10 +54,10 @@ userRouter.post("/login", async (request, response) => {
 
        await user.save()
     if (user.length > 0) {
-      bcrypt.compare(pass, hashed_pass, (err, result) => {
+      bcrypt.compare(pass, user[0].pass, (err, result) => {
         if (result) {
-          const token = jwt.sign({ userId:user[0]._id }, "sonu");
-          response.json({ msg: "login successfull", "token": token });
+          const token = jwt.sign({ userId:user[0]._id }, process.env.key);
+          response.send({ msg: "login successfull", "token": token });
         } else {
           response.send("rwong creatensial");
         }
@@ -72,5 +72,5 @@ userRouter.post("/login", async (request, response) => {
 });
 
 module.exports = {
-  userRouter,
+  userRouter
 };
